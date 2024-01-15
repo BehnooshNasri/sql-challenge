@@ -2,13 +2,13 @@
 
 -- departments
 CREATE TABLE departments (
-    dept_no varchar(200) PRIMARY KEY,
+    dept_no varchar(200) NOT NULL PRIMARY KEY ,
     dept_name varchar(200)
 );
 
 -- employees
 CREATE TABLE employees (
-    emp_no int PRIMARY KEY,
+    emp_no int NOT NULL PRIMARY KEY,
     emp_title_id varchar(200),
     birth_date varchar (200),
     first_name varchar(200),
@@ -19,15 +19,15 @@ CREATE TABLE employees (
 
 -- dept_manager
 CREATE TABLE dept_manager (
-    dept_no varchar(200),
-    emp_no int,
+    dept_no varchar(200) NOT NULL,
+    emp_no int NOT NULL,
     FOREIGN KEY(dept_no) REFERENCES departments(dept_no),
     FOREIGN KEY(emp_no) REFERENCES employees(emp_no)
 );
 
 CREATE TABLE dept_emp (
-    emp_no int,
-    dept_no varchar(200),
+    emp_no int NOT NULL,
+    dept_no varchar(200) NOT NULL,
     PRIMARY KEY (emp_no, dept_no),
     FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
     FOREIGN KEY (dept_no) REFERENCES departments(dept_no)
@@ -35,7 +35,7 @@ CREATE TABLE dept_emp (
 
 -- salaries
 CREATE TABLE salaries (
-    emp_no int,
+    emp_no int NOT NULL,
     salary int,
     FOREIGN KEY(emp_no) REFERENCES employees(emp_no),
     PRIMARY KEY (emp_no)
@@ -43,7 +43,7 @@ CREATE TABLE salaries (
 
 -- titles
 CREATE TABLE titles (
-    title_id varchar(200) PRIMARY KEY,
+    title_id varchar(200) NOT NULL PRIMARY KEY,
     title varchar(200)
 );
 
